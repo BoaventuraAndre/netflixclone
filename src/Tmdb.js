@@ -2,13 +2,13 @@ const API_KEY = '95a9983f93085c4448e7f5193944cb07';
 const API_BASE_URL = 'https://api.themoviedb.org/3';
 
 const basicFetch = async (endpoint) => {
-    const req = await fetch `${API_BASE_URL}${endpoint}`;
+    const req = await fetch (`${API_BASE_URL}${endpoint}`);
     const json = await req.json();
     return json;
 }
 
 export default {
-    getHomeList: async () =>{
+    getHomeList : async () =>{
         return [
             {
                 slug: 'originals',
@@ -42,7 +42,7 @@ export default {
             },
             {
                 slug: 'romance',
-                title: 'Romancer',
+                title: 'Romance',
                 items: await basicFetch(`/discover/movie?with_genres=10749&language=pt-PT&api_key=${API_KEY}`)
             },
             {
