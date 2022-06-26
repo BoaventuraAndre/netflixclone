@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 const API_KEY = '95a9983f93085c4448e7f5193944cb07';
 const API_BASE_URL = 'https://api.themoviedb.org/3';
 
@@ -53,5 +54,29 @@ export default {
           
             
         ]
+    },
+
+    getMovieInfo :  async (movieId, type)=>{
+        let info = {};
+
+        if(movieId){
+            switch(type){
+            case 'movie':
+                info = await basicFetch(`/movie/${movieId}?language=pt-PT&api_key=${API_KEY}`)  
+            break;     
+
+            case 'tv':
+                info = await basicFetch(`/tv/${movieId}?language=pt-PT&api_key=${API_KEY}`)  
+            break; 
+
+            default :
+            info = null;
+            break;
+            }     
+        
+        }
+
+        return info;
     }
+
 }
